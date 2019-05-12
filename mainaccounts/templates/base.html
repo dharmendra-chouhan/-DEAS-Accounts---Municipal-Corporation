@@ -1,0 +1,230 @@
+{% load static %}
+{% comment %} 
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    
+    <link href="{% static "css/blog.css" %}" rel="stylesheet">
+    <script src="{% static "js/main.js" %}"></script>   
+
+    
+</head>
+
+<body>
+    <div id="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+    <div id="sidebar">
+        <h2>My blog</h2>
+        <p>This is my blog.</p>
+    </div>
+</body>
+
+</html> {% endcomment %}
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="UTF-8">
+<title>  DEAS Accounts - Municipal Corporation</title>
+<link rel="shortcut icon" href="assets/img/favicon.ico">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<!-- Base Css Files for Global -->
+{% comment %} <link href="assets/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet" /> {% endcomment %}
+<link href="{% static "assets/libs/bootstrap/css/bootstrap.min.css" %}" rel="stylesheet">
+<link href="{% static "assets/libs/font-awesome/css/font-awesome.min.css" %}" rel="stylesheet" />
+<link href="{% static "assets/libs/fontello/css/fontello.css" %}" rel="stylesheet" />
+<link href="{% static "assets/libs/animate-css/animate.min.css" %}" rel="stylesheet" />
+<link href="{% static "assets/libs/pace/pace.css" %}" rel="stylesheet" />
+<link href="{% static "assets/css/style.css" %}" rel="stylesheet" type="text/css" />
+<link href="{% static "assets/css/style-responsive.css"  %}" rel="stylesheet" />
+<!-- <link href="{% static "assets/css/style-amount_format.css"  %}" rel="stylesheet" /> -->
+<link href="{% static "assets/libs/lightbox/jquery.fancybox.css" %}" rel="stylesheet" type="text/css" />
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">  
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script> 
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+<body class="fixed-left">
+<!-- Begin page -->
+<div id="wrapper"> 
+  <!-- Top Bar Start -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <div class="logo">
+        {% comment %} <h1><a href="index.html"><img src="{% static "assets/img/naman.png" %}" ></h1> {% endcomment %}
+      </div>
+      <button class="button-menu-mobile open-left"> <i class="fa fa-bars"></i> </button>
+    </div>
+    <!-- Button mobile view to collapse sidebar menu -->
+    <div class="navbar navbar-default" role="navigation">
+      <div class="container">
+        <div class="navbar-collapse2">
+          <ul class="nav navbar-nav">
+            <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-th"></i></a>
+             
+            </li>
+            <li class="center-logo-text">
+              <h1>  DEAS Accounts - Municipal Corporation</h1>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right top-navbar">
+            <li class="dropdown iconify hide-phone"><a onclick="javascript:toggle_fullscreen()" href="#"><i class="icon-resize-full-2"></i></a></li>
+            <li class="logo hide-phone margin-right-5">
+              {% comment %} <h1><a href="#"><img src="{% static "assets/img/naman.png" %}" alt="Logo"></a></h1> {% endcomment %}
+			  
+            </li>
+          </ul>
+        </div>
+        <!--/.nav-collapse --> 
+      </div>
+    </div>
+  </div>
+  <!-- Top Bar End --> 
+ <!-- Left Sidebar Start -->
+  <div class="left side-menu">
+    <div class="sidebar-inner slimscrollleft"> 
+      
+      <!-- Search form -->
+      <form role="search" class="navbar-form">
+        <div class="form-group">
+          <input type="text" placeholder="Search" class="form-control">
+          <button type="submit" class="btn search-button"><i class="fa fa-search"></i></button>
+        </div>
+      </form>
+      <!--- Profile --> 
+      <!--- Divider -->
+      <div class="clearfix"></div>
+      <!--- Divider -->
+      <div id="sidebar-menu">
+        <ul>
+
+          <li class='has_sub'><a href='javascript:void(0);'><i class='fa fa-cogs'></i><span>Accounts</span> <span class="pull-right"><i class="fa fa-angle-down"></i></span></a>
+            <ul>
+              <li class='has_sub'><a href='javascript:void(0);'><span>Master</span> <span class="pull-right"><i class="fa fa-angle-down"></i></span></a>
+                <ul>
+                 
+    </a>
+
+                  <li><a href="/vendors/search"><span>Vendor</span></a></li>
+                    <li><a href="/books/new"><span>Books</span></a></li>
+                  <li><a href='/bankmaster/search'><span>Bank Master</span></a></li>
+                  <li><a href='/vendors/search'><span>Bank Accounts</span></a></li>
+                  <li><a href='/subledger'><span>Ledger</span></a></li>
+                </ul>
+              </li>
+              <li class='has_sub'><a href='javascript:void(0);'><span>Transcation</span> <span class="pull-right"><i class="fa fa-angle-down"></i></span></a>
+                <ul>
+                  <li><a href='emergency-numbers.html'><span>Receipt</span></a></li>
+                  <li><a href='district-administration.html'><span>Payment</span></a></li>
+                 </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </div>
+  <!-- Left Sidebar End --> 
+
+  <!-- Start right content -->
+  <div class="content-page">
+    <ol class="breadcrumb"  >
+      <li>
+      <a href="/">  <i class="fa fa-home">  </i></a>
+      </li>
+      <li>
+      
+      {% block title %}   {% endblock %}
+      
+      </li>
+    </ol>
+
+
+    
+    <!-- ============================================================== --> 
+    <!-- Start Content here --> 
+    <!-- ============================================================== -->
+    <div class="content"> 
+      <!-- Start info box -->
+       {% block content %}
+        {% endblock %}
+      <!-- End of info box --> 
+      
+      <!--Wedgets Start Here-->
+      <div class="row"> 
+        <!--Twitter Widget Start here-->
+    
+        <!--Twitter Widget End here--> 
+        <!--Facebook Widget Start here-->
+
+        <!--Facebook Widget End here--> 
+        <!--Video Start here-->
+
+        <!--Video End here--> 
+      </div>
+      <!--Wedgets End Here--> 
+      <!-- ============================================================== --> 
+      <!-- End content here --> 
+      <!-- ============================================================== --> 
+      
+      <!-- End right content --> 
+    </div>
+    
+    <!-- Footer Start -->
+<br>
+<br><br><br>
+    <footer class="clearfix">
+    <div class="footer-links pull-right"> 
+      <a>Copyright &copy; Dharmendra 2019</a>
+   </div>
+    </footer>
+
+
+    <!-- Footer End --> 
+    <!--Scroll To Top--> 
+    <a class="tothetop" href="javascript:;"><i class="fa fa-angle-up"></i></a> 
+    
+    <!-- End of page --> 
+  </div>
+</div>
+<!-- the overlay modal element -->
+<div class="md-overlay"></div>
+<!-- End of eoverlay modal --> 
+<script>
+    var resizefunc = [];
+</script> 
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+<script src="{% static "assets/libs/jquery/jquery-1.11.1.min.js" %}"></script> 
+<script src="{% static "assets/libs/bootstrap/js/bootstrap.min.js" %}"></script> 
+<script src="{% static "assets/libs/jqueryui/jquery-ui-1.10.4.custom.min.js" %}"></script> 
+<script src="{% static "assets/libs/pace/pace.min.js" %}"></script> <!--Loader--> 
+<script src="{% static "assets/libs/bootstrap-bootbox/bootbox.min.js" %}"></script> <!-- bootstrap popup --> 
+<script src="{% static "assets/libs/jquery-detectmobile/detect.js" %}"></script> <!-- Mobile Detect --> 
+<script src="{% static "assets/libs/lightbox/jquery.fancybox.js" %}"></script> <!-- LightBox --> 
+<script src="{% static "assets/libs/jquery-slimscroll/jquery.slimscroll.js" %}"></script>
+<script src="{% static "assets/js/init.js" %}"></script> 
+
+
+
+{% block javascript %}
+{% endblock %}
+<!-- End of JavaScript plugins --> 
+<!-- Add fancyBox main JS and CSS files --> 
+
+
+
+</body>
+</html>
+
+
+

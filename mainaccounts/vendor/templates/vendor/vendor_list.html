@@ -1,0 +1,82 @@
+ {% extends "base.html" %}
+<div class="widget">
+{% block content %}	 
+ 
+    <div class="widget">
+        <div class="widget-header">
+            <h2>Vendor <strong>Serach</strong></h2> 
+       </div>
+      
+        <div class="widget-content padding">
+          <div class="text-right padding-bottom-10">
+             <a href="{% url "vendor:vendor_new" %}"> 
+                  <button type="button" class="btn btn-success"><i class="fa fa-plus-circle"></i> Add </button></a>
+        </div>
+        
+
+
+          <!--Add Section Strat Here-->
+          <form action="." class="form-horizontal">
+          
+            <div class="widget-content padding">
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Vendor Name</label>
+                <div class="col-sm-4">
+                    <input name="query" type="text" class="form-control">
+                </div>
+            </div>
+           </div>
+            <div class="text-center padding-bottom-20">
+              
+              
+               <button type="submit" class="btn btn-success">Submit</button>
+
+
+               <button type="Reset" class="btn btn-default">Reset</button>
+               <button type="button" class="btn btn-primary">Back</button>         
+            </div>
+          </form>
+          
+          <!--Add Section End Here-->
+          
+{% if query %}
+<h3>
+{% with results.count as total_results %}
+Found {{ total_results }} result{{ total_results|pluralize }}
+{% endwith %}
+</h3>
+
+<p><a href="{% url "vendor:vendor_search" %}">Search again</a></p>
+          <div class="table-responsive">
+            <table class="table table-bordered table-striped">           
+              <tr>
+                   <th>Name</th>
+                   <th>Mobile Number</th>
+                   <th>Email </th>
+                   <th>Address</th>
+                   <th>Edit</th>
+                   <th>Delete</th>
+              </tr>{% for vendor in results %}<tr>
+                  <td>{{ vendor.vname }}</td>
+                  <td>{{ vendor.vcontact }}</td>
+                  <td>{{ vendor.vemail }}</td>
+                  <td>{{ vendor.vaddress }}</td>
+
+                  <td><a data-toggle="tooltip" data-placement="top" title="Edit" class="btn btn-warning btn-sm" href="{% url "vendor:vendor_edit" vendor.id %}">
+                  <i class="fa fa-pencil"></i>
+                  </a></td>
+                  <td><a data-toggle="tooltip" data-placement="top" title="Delete" class="btn btn-danger btn-sm" href="{% url "vendor:vendor_delete" vendor.id %}">
+                  <i class="fa fa-trash"></i>
+                  </a></td>
+                  </tr>
+{% empty %}
+  <h1>Not found</h1>
+{% endfor %}
+
+            </table>
+          </div>
+{% endif %}
+
+{% endblock %}      
+</div>

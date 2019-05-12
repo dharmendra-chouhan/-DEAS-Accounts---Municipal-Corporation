@@ -1,0 +1,64 @@
+
+{% extends "base.html" %}
+{% comment %} {% block content %}	 
+<div class="content"> 
+      <!-- Start info box -->
+      <div class="widget">
+      <h1>Add New Vendor </h1>
+<form method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Submit" />
+</form>
+<a href="{% url 'vendor_list' %}">Search</a>
+ </div>
+ </div>
+{% endblock %}  {% endcomment %}
+  <div class="content-page">
+{% block content %}	 
+
+    
+      <div class="widget">
+        <div class="widget-header">
+          <h2>Vendor Details</h2>
+          <div class="additional-btn"> <a href="#" data-toggle="tooltip" data-original-title="Help"><i class="fa fa-question-circle fa-lg"></i></a> </div>
+        </div>
+        <div class="widget-content padding">
+          <div class="mand-label clearfix"><span>Field with <i class="text-red-1">*</i> is mandatory</span></div>
+          <form action="" method="post" class="form-horizontal">
+           {% csrf_token %}
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Vendor Name</label>
+              <div class="col-sm-4">
+              
+                 {{ form.vname }}  
+              </div>
+              <label class="col-sm-2 control-label">Mobile Number</label>
+              <div class="col-sm-4">
+               {{ form.vcontact }} 
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Email</label>
+              <div class="col-sm-4">
+               {{ form.vemail }} 
+                {% comment %} <input name="" type="text" class="form-control" > {% endcomment %}
+              </div>
+              <label class="col-sm-2 control-label">Address</label>
+              <div class="col-sm-4">
+               {{ form.vaddress }} 
+                {% comment %} <input name="" type="text" class="form-control" > {% endcomment %}
+              </div>
+            </div>
+           
+           
+            
+            <div class="text-center padding-top-10">
+              <button type="submit" class="btn btn-success">Submit</button>
+              <button type="button" class="btn btn-danger">Cancel</button>
+            </div>
+          </form>
+        </div>
+      </div>
+ 
+    </div>
+{% endblock %} </div>

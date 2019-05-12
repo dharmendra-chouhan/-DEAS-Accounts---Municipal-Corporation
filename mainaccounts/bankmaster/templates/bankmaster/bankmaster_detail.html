@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block content %}	 
+<h1>Book Details</h1>
+<h2>Name: {{object.bankname }}</h2>
+Pages: {{ object.branch   }}
+<a href="{% url "bankmaster:bankmaster_list" %}">Search</a>
+{% endblock %} 

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}	 
+<h1>Subledger Delete</h1>
+<div class="container">
+    <form method="post">{% csrf_token %}
+      Are you sure you want to delete "{{ object }}" ?
+      <input class="btn btn-primary" type="submit" value="Submit" />
+    </form>
+  </div>
+<a href="{% url "subledger:subledger_search" %}">Back</a>
+{% endblock %} 
+

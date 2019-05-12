@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block content %}	 
+<h1>Book Details</h1>
+<h2>Name: {{object.vname}}</h2>
+Pages: {{ object.vcontact }}
+<a href="{% url "vendor:vendor_list" %}">Search</a>
+{% endblock %} 

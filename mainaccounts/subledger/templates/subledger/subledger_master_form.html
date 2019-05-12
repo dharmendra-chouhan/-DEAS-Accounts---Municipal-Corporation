@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+{% comment %} {% block content %}	 
+<!-- {% load crispy_forms_tags %} -->
+
+<div class="content">
+   <!-- Start info box -->
+   <div class="widget">
+      <h1>Add New Ledger </h1>
+      <form method="post">{% csrf_token %}
+         {{ form.as_p }}
+         <input type="submit" value="Submit" />
+      </form>
+      <a href="{% url 'subledger_list' %}">Search</a>
+   </div>
+</div>
+{% endblock %}  {% endcomment %}
+<div class="content-page">
+   
+   {% block content %}	 
+   <div class="widget ">
+      <div class="widget-header">
+         <h2>Ledger Details</h2>
+         <div class="additional-btn"> <a href="#" data-toggle="tooltip" data-original-title="Help"><i class="fa fa-question-circle fa-lg"></i></a> </div>
+      </div>
+      <div class="widget-content padding">
+         <div class="mand-label clearfix"><span>Field with <i class="text-red-1">*</i> is mandatory</span></div>
+         <form method="post" class="form-horizontal">
+            {% csrf_token %}
+            <div class="form-group">
+               <label class="col-sm-2 control-label">Function</label>
+               <div class="col-sm-4">
+                  <select name={{ 'function_id' }} id={{ 'form.function_id' }} class="fld-subtype form-control" style="max-width:70%;">
+                  <option value="">Select</option>
+                  {% for x in functionmaster %}
+                  <option value="{{ x.id }}">{{ x.function_compcode}}-{{ x.function_desc }}</option>
+                  {% endfor %}
+                  </select>
+               </div>
+               <label class="col-sm-2 control-label">Object</label>
+               <div class="col-sm-4">
+                  <select name={{ 'object_id' }} id={{ 'form.object_id' }} class="fld-subtype form-control" style="max-width:70%;">
+                  <option value="">Select</option>
+                  {% for x in objectmaster %}
+                  <option value="{{ x.id }}">{{ x.object_compcode}}-{{ x.object_desc }}</option>
+                  {% endfor %}
+                  </select>
+               </div>
+            </div>
+            <div class="form-group">
+               <label class="col-sm-2 control-label">Budget</label>
+               <div class="col-sm-4">
+                  <select name={{ 'lookupdet_bug' }} id={{ 'form.lookupdet_bug' }} class="fld-subtype form-control" style="max-width:30%;">
+                  <option value="">Select</option>
+                  {% for y in lookupdetbug %}
+                  <option value="{{ y.id }}">{{ y.lookupdetdesc }}</option>
+                  {% endfor %}
+                  </select>
+               </div>
+               <label class="col-sm-2 control-label">Budget Provsion Required</label>
+               <div class="col-sm-4">
+                  <select name={{ 'budget_provion_required' }} id={{ 'form.budget_provion_required' }} class="fld-subtype form-control" style="max-width:30%;">
+                  <option value="">Select</option>
+                  {% for x in lookupdetbrq %}
+                  <option value="{{ x.id }}">{{ x.lookupdetdesc }}</option>
+                  {% endfor %}
+                  </select>
+               </div>
+            </div>
+            <div class="form-group">
+               <label class="col-sm-2 control-label">Ledger Code</label>
+               <div class="col-sm-4">
+                  <input type="text" required="" class="form-control" name={{ 'subledger_code' }} maxlength="10" id={{ 'subledger_code' }} aria-required="true" style="max-width:30%;">
+               </div>
+               <label class="col-sm-2 control-label">Ledger</label>
+               <div class="col-sm-4">
+                  <input type="text" required="" class="form-control" name={{ 'subledger_desc' }} maxlength="200" id={{ 'subledger_desc' }} aria-required="true">
+               </div>
+            </div>
+            <div class="form-group">
+               <label class="col-sm-2 control-label">Opening Balance</label>
+               <div class="col-sm-4">
+                  <!-- {{ form.opening_bal  }} -->
+
+                  <input type="number" required="" class="form-control" name={{ 'opening_bal' }} maxlength="10" id={{ 'opening_bal' }} aria-required="true" style="max-width:30%;" style="text-align: right;">
+            
+
+
+                  
+               </div>
+               <label class="col-sm-2 control-label">Dr/Cr</label>
+               <div class="col-sm-4">
+                  <select name={{ 'lookupdet_opening_drcr' }} id={{ 'form.lookupdet_opening_drcr' }} class="fld-subtype form-control" style="max-width:30%;">
+                  <option value="">Select</option>
+                  {% for x in lookupdet %}
+                  <option value="{{ x.id }}">{{ x.lookupdetdesc }}</option>
+                  {% endfor %}
+                  </select>
+               </div>
+            </div>
+            <div class="form-group">
+               <label class="col-sm-2 control-label">Opening Bal Date</label>
+               <div class="col-sm-4">
+                  <div class="input-group date" data-provide="datepicker">
+                     <input type="text" class="form-control"  id={{ 'opening_bal_date' }} name={{ 'opening_bal_date' }} id="opening_bal_date" class="datepicker" data-date-format="dd/mm/yyyy">
+                     <div class="input-group-addon">
+                        <span class="glyphicon glyphicon-th"></span>
+                     </div>
+                  </div>
+               </div>
+               <label class="col-sm-2 control-label">Status</label>
+               <div class="col-sm-4">
+                  <select name={{ 'status' }} id={{ 'form.status' }} class="fld-subtype form-control" style="max-width:30%;">
+                  <option value="">Select</option>
+                  {% for x in lookupdetstu %}
+                  <option value="{{ x.id }}">{{ x.lookupdetdesc }}</option>
+                  {% endfor %}
+                  </select>
+               </div>
+            </div>
+            <div class="text-center padding-top-10">
+               <button type="submit" class="btn btn-success">Submit</button>
+               <button type="button" class="btn btn-danger">Cancel</button>
+            </div>
+         </form>
+      </div>
+   </div>
+</div>
+{% endblock %} </div>

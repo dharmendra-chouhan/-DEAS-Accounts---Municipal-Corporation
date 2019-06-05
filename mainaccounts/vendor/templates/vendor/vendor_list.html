@@ -1,4 +1,12 @@
  {% extends "base.html" %}
+
+ {% load static %}
+
+{% block javascript %}
+  <script src="{% static 'vendor/js/vendor.js' %}"></script>
+{% endblock %}
+
+
 <div class="widget">
 {% block content %}	 
  
@@ -49,7 +57,7 @@ Found {{ total_results }} result{{ total_results|pluralize }}
 
 <p><a href="{% url "vendor:vendor_search" %}">Search again</a></p>
           <div class="table-responsive">
-            <table class="table table-bordered table-striped">           
+            <table class="table table-bordered table-striped" id="vendor-table">           
               <tr>
                    <th>Name</th>
                    <th>Mobile Number</th>
@@ -69,6 +77,14 @@ Found {{ total_results }} result{{ total_results|pluralize }}
                   <td><a data-toggle="tooltip" data-placement="top" title="Delete" class="btn btn-danger btn-sm" href="{% url "vendor:vendor_delete" vendor.id %}">
                   <i class="fa fa-trash"></i>
                   </a></td>
+                  <td>
+              <button type="button"
+                    class="btn btn-danger btn-sm js-delete-vendor"
+                    data-url="{% url 'vendor:vendor_delete' vendor.id %}">
+              <span class="glyphicon glyphicon-trash"></span> Delete
+            </button>
+
+                  </td>
                   </tr>
 {% empty %}
   <h1>Not found</h1>

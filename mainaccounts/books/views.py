@@ -66,4 +66,5 @@ def book_delete(request, pk):
     data = dict()
     context = {'book': book}
     data['html_form'] = render_to_string('books/includes/partial_book_delete.html', context, request=request)
+    print(data)
     return JsonResponse(data)

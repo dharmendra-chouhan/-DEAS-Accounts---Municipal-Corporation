@@ -43,8 +43,10 @@ INSTALLED_APPS = [
     'lookup',
     'accountcode.apps.AccountcodeConfig',
     'subledger.apps.SubledgerConfig',
+    'receipt.apps.ReceiptConfig',
     'login.apps.LoginConfig',
     'books',
+    'mycollections.apps.MycollectionsConfig',
     'crispy_forms',
     'django.contrib.postgres',
 ]

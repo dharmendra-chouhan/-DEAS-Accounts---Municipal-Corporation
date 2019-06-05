@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}{% endblock %}
+{% block content %}
+
+    <h2>Here are all user receipts: </h2>
+    <div>
+        <ul>
+            {% for receipt in object_list %}
+                <li>{{ receipt.subledger_master }} {{ receipt.receipt_amt }} | <a
+                        href="{% url 'receipt-update' receipt.pk %}">edit</a>
+                    <a href="{% url 'receipt-delete' receipt.pk %}">delete</a>
+                </li>
+            {% empty %}
+                <li>No receipt yet.</li>
+            {% endfor %}
+
+        </ul>
+        <p>
+            <a href="{% url 'receipt-add' %}">add a receipt</a>
+        </p>
+    </div>
+{% endblock %}
+
+

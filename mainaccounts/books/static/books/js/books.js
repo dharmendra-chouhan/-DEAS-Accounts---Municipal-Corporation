@@ -50,7 +50,22 @@ $(function () {
   $("#modal-book").on("submit", ".js-book-update-form", saveForm);
 
   // Delete book
-  $("#book-table").on("click", ".js-delete-book", loadForm);
+  //$("#book-table1").on("click", ".js-delete-book", loadForm);
   $("#modal-book").on("submit", ".js-book-delete-form", saveForm);
 
 });
+$('.js-delete-book').click(function(){
+  var btn = $(this);
+    $.ajax({
+      url: btn.attr("data-url"),
+      type: 'get',
+      dataType: 'json',
+      beforeSend: function () {
+        $("#modal-book .modal-content").html("");
+        $("#modal-book").modal("show");
+      },
+      success: function (data) {
+        $("#modal-book .modal-content").html(data.html_form);
+      }
+    });
+})

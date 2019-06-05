@@ -22,14 +22,14 @@ class Subledger_master(models.Model):
     # )
     #     BUDGET_CHOICES = (
     #     ('Y', 'Yes'),
-    #     ('N', 'No'),
+    #     ('N', 'No'),  
     # )
         function_id = models.ForeignKey(Function_master, on_delete=models.CASCADE,related_name='Function')
         object_id = models.ForeignKey(Object_master, on_delete=models.CASCADE ,related_name='Object')
         lookupdet_bug= models.ForeignKey(Lookupdet, on_delete=models.CASCADE ,related_name='Budget')
-        opening_bal = models.DecimalField(decimal_places=2,max_digits=15)
-        lookupdet_opening_drcr = models.ForeignKey(Lookupdet, on_delete=models.CASCADE ,related_name='Lookupdet')
-        opening_bal_date =models.DateField(default=datetime.today)
+        opening_bal = models.DecimalField(default=None, blank=True, null=True, decimal_places=2,max_digits=15)
+        lookupdet_opening_drcr = models.ForeignKey(Lookupdet, on_delete=models.CASCADE ,related_name='Lookupdet', default=None, blank=True, null=True)
+        opening_bal_date =models.DateField(default=None, blank=True, null=True)
         subledger_code=models.CharField(max_length=20)
         subledger_desc=models.CharField(max_length=200)
         status = models.ForeignKey(Lookupdet, on_delete=models.CASCADE ,related_name='Lookupdet_status')

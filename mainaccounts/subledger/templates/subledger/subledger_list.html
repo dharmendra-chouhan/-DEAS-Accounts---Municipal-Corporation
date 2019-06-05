@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
+
 {% block javascript %}
   <script src="{% static 'subledger/js/subledger.js' %}"></script>
 {% endblock %}
@@ -34,7 +35,7 @@
       <div class="text-center padding-bottom-20">
          <button type="submit" class="btn btn-success">Submit</button>
          <button type="Reset" class="btn btn-default">Reset</button>
-         <button type="button" class="btn btn-primary">Back</button>         
+       
       </div>
    </form>
    {% if query %}
@@ -60,17 +61,11 @@
                <i class="fa fa-pencil"></i>
                </a>
             </td>
-            <td><a data-toggle="tooltip" data-placement="top" title="Delete" class="btn btn-danger btn-sm js-delete-book"  class="fancybox fancybox.iframe" href="{% url "subledger:subledger_delete" subledger.id %}">
+            <td><a data-toggle="tooltip" data-placement="top" title="Delete" class="btn btn-danger btn-sm js-dele-subledger"  class="fancybox fancybox.iframe" href="{% url "subledger:subledger_delete" subledger.id %}">
                <i class="fa fa-trash"></i>
                </a>
             </td>
-            <td>
-               <button  type="button"
-               class="btn btn-danger btn-sm js-delete-Subledger_master"
-               data-url="{% url 'subledger:subledger_master_delete' subledger.id %}">
-         <span class="glyphicon glyphicon-trash"></span> Delete
-       </button>
-            </td>
+   
          </tr>
          {% empty %}
          <h1>Not found</h1>

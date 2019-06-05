@@ -4,8 +4,11 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.shortcuts import render, get_object_or_404
 from django.contrib.postgres.search import SearchVector
-
+from django.template.loader import render_to_string
 from .forms import SearchForm
+from django.http import JsonResponse
+
+
 
 from .models import Vendor
 
@@ -45,3 +48,12 @@ def vendor_search(request):
     return render(request,'vendor/vendor_list.html',{'form': form,
                                                     'query': query,
                                                     'results': results})
+
+
+def vendor_delete(request, pk):
+    print("dharmendra")
+    vendor = get_object_or_404(Vendor, pk=pk)
+    data = dict()
+    context = {'vendor': vendor}
+    data['html_form'] = render_to_string('vendor/partial_book_delete.html', context, request=request)
+    return JsonResponse({"key": "value"})

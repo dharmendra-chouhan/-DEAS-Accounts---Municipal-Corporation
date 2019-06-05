@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls import url
 
 admin.site.site_header = 'DEAS Accounts - Municipal Corporation'
 
@@ -26,4 +27,8 @@ urlpatterns = [
     path('books/', include('books.urls')),
     path('bankmaster/', include('bankmaster.urls', namespace='bankmaster')),
     path('subledger/', include('subledger.urls', namespace='subledger')),
+    path('mycollections/', include('mycollections.urls', namespace='mycollections')),
+    url(r'', include('receipt.urls')),
+
+
 ]

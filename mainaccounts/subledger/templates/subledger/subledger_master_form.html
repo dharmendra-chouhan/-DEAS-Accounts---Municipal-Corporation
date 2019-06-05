@@ -1,4 +1,12 @@
 {% extends "base.html" %}
+{% load static %}
+
+
+{% block javascript %}
+  <script src="{% static 'subledger/js/subledger.js' %}"></script>
+
+{% endblock %}
+
 {% comment %} {% block content %}	 
 <!-- {% load crispy_forms_tags %} -->
 
@@ -6,7 +14,7 @@
    <!-- Start info box -->
    <div class="widget">
       <h1>Add New Ledger </h1>
-      <form method="post">{% csrf_token %}
+      <form method="post" >{% csrf_token %}
          {{ form.as_p }}
          <input type="submit" value="Submit" />
       </form>
@@ -24,13 +32,13 @@
       </div>
       <div class="widget-content padding">
          <div class="mand-label clearfix"><span>Field with <i class="text-red-1">*</i> is mandatory</span></div>
-         <form method="post" class="form-horizontal">
+         <form method="post" class="form-horizontal"  id="myForm" >
             {% csrf_token %}
             <div class="form-group">
                <label class="col-sm-2 control-label">Function</label>
                <div class="col-sm-4">
-                  <select name={{ 'function_id' }} id={{ 'form.function_id' }} class="fld-subtype form-control" style="max-width:70%;">
-                  <option value="">Select</option>
+                  <select name={{ 'function_id' }} id={{ 'form.function_id' }} class="fld-subtype form-control" style="max-width:70%;" onchange="Function_object_code()">
+                  <option value="0">Select</option>
                   {% for x in functionmaster %}
                   <option value="{{ x.id }}">{{ x.function_compcode}}-{{ x.function_desc }}</option>
                   {% endfor %}
@@ -38,8 +46,8 @@
                </div>
                <label class="col-sm-2 control-label">Object</label>
                <div class="col-sm-4">
-                  <select name={{ 'object_id' }} id={{ 'form.object_id' }} class="fld-subtype form-control" style="max-width:70%;">
-                  <option value="">Select</option>
+                  <select name={{ 'object_id' }} id={{ 'form.object_id' }} class="fld-subtype form-control" style="max-width:70%;" onchange="Function_object_code()">
+                  <option value="0">Select</option>
                   {% for x in objectmaster %}
                   <option value="{{ x.id }}">{{ x.object_compcode}}-{{ x.object_desc }}</option>
                   {% endfor %}
@@ -69,26 +77,28 @@
             <div class="form-group">
                <label class="col-sm-2 control-label">Ledger Code</label>
                <div class="col-sm-4">
-                  <input type="text" required="" class="form-control" name={{ 'subledger_code' }} maxlength="10" id={{ 'subledger_code' }} aria-required="true" style="max-width:30%;">
+                  <input type="text" required="" class="form-control" name={{ 'subledger_code' }} maxlength="10" id={{ 'subledger_code' }} aria-required="true" style="max-width:30%;" readonly>
                </div>
                <label class="col-sm-2 control-label">Ledger</label>
                <div class="col-sm-4">
                   <input type="text" required="" class="form-control" name={{ 'subledger_desc' }} maxlength="200" id={{ 'subledger_desc' }} aria-required="true">
                </div>
             </div>
-            <div class="form-group">
+            <div id="dvopenbal" style="display: none">
+            
+            <div class="form-group" >
                <label class="col-sm-2 control-label">Opening Balance</label>
-               <div class="col-sm-4">
+               <div class="col-sm-4" >
                   <!-- {{ form.opening_bal  }} -->
 
-                  <input type="number" required="" class="form-control" name={{ 'opening_bal' }} maxlength="10" id={{ 'opening_bal' }} aria-required="true" style="max-width:30%;" style="text-align: right;">
+                  <input type="number"  class="form-control" name={{ 'opening_bal' }} maxlength="10" id={{ 'opening_bal' }}  style="max-width:30%;" style="text-align: right;">
             
 
 
                   
                </div>
                <label class="col-sm-2 control-label">Dr/Cr</label>
-               <div class="col-sm-4">
+               <div class="col-sm-4" >
                   <select name={{ 'lookupdet_opening_drcr' }} id={{ 'form.lookupdet_opening_drcr' }} class="fld-subtype form-control" style="max-width:30%;">
                   <option value="">Select</option>
                   {% for x in lookupdet %}
@@ -97,7 +107,12 @@
                   </select>
                </div>
             </div>
+
+         </div>
+
             <div class="form-group">
+                  <div id="dvopenbaldate" style="display: none">
+               
                <label class="col-sm-2 control-label">Opening Bal Date</label>
                <div class="col-sm-4">
                   <div class="input-group date" data-provide="datepicker">
@@ -107,9 +122,10 @@
                      </div>
                   </div>
                </div>
+            </div>
                <label class="col-sm-2 control-label">Status</label>
                <div class="col-sm-4">
-                  <select name={{ 'status' }} id={{ 'form.status' }} class="fld-subtype form-control" style="max-width:30%;">
+                  <select name={{ 'status' }} id={{ 'form.status' }} class="fld-subtype form-control" required="*" style="max-width:30%;">
                   <option value="">Select</option>
                   {% for x in lookupdetstu %}
                   <option value="{{ x.id }}">{{ x.lookupdetdesc }}</option>
@@ -118,7 +134,7 @@
                </div>
             </div>
             <div class="text-center padding-top-10">
-               <button type="submit" class="btn btn-success">Submit</button>
+               <button type="submit"  class="btn btn-success" id="btn-submit">Submit</button>
                <button type="button" class="btn btn-danger">Cancel</button>
             </div>
          </form>

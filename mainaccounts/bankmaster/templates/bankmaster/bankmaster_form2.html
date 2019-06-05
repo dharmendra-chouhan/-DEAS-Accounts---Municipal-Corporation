@@ -1,0 +1,116 @@
+
+{% extends "base.html" %}
+{% comment %} {% block content %}	 
+<div class="content"> 
+      <!-- Start info box -->
+      <div class="widget">
+      <h1>Add New Bank Master </h1>
+<form method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Submit" />
+</form>
+<a href="{% url 'bankmaster_list' %}">Search</a>
+ </div>
+ </div>
+{% endblock %}  {% endcomment %}
+  <div class="content-page">
+{% block content %}	 
+<div class="widget">
+  <div class="widget-header">
+    <h2>bankmaster Details</h2>
+    <div class="additional-btn"> <a href="#" data-toggle="tooltip" data-original-title="Help"><i class="fa fa-question-circle fa-lg"></i></a> </div>
+  </div>
+  <div class="widget-content padding">
+<div class="widget-content padding">
+  <form action="" method="get" class="form-horizontal ng-valid ng-dirty">
+     <div class="container ng-scope" ng-controller="TextAreaController">
+        <div class="panel-group accordion-toggle" id="accordion_single_collapse">
+           <div class="panel panel-default">
+              <div id="a0" class="panel-collapse collapse in">
+                 <div class="panel-body">
+                    <div class="form-group">
+                       <label for="text-1556335852597" class="col-sm-2 control-label">Bank Code  <span class="required">*</span> 
+                       <span class="tooltip-element" tooltip="Bank Code ">?</span></label>
+                       <div class="col-sm-4">
+                          <input type="text" required="" class="form-control" name="text-1556335852597" maxlength="20" id="text-1556335852597" aria-required="true">
+                       </div>
+                       <label for="text-1556335899319" class="col-sm-2 control-label">Bank Name <span class="required">*</span> </label>
+                       <div class="col-sm-4"><input type="text" required="" class="form-control" name="text-1556335899319" maxlength="100" id="text-1556335899319" aria-required="true"></div>
+                    </div>
+                    <div class="form-group">
+                       <label for="text-1556335940037" class="col-sm-2 control-label">Bank Branch <span class="required">*</span> <span class="tooltip-element" tooltip="Bank Branch">?</span></label>
+                       <div class="col-sm-4"><input type="text" required="" class="form-control" name="text-1556335940037" id="text-1556335940037" aria-required="true"></div>
+                       <label for="textarea-1556336013679" class="col-sm-2 control-label">Bank Address <span class="required">*</span> <span class="tooltip-element" tooltip="Bank Address">?</span></label>
+                       <div class="col-sm-4"><textarea type="textarea" required="" class="form-control" name="textarea-1556336013679" id="textarea-1556336013679" aria-required="true"></textarea></div>
+                    </div>
+                 </div>
+              </div>
+              <div class="table-cover" style="">
+                 <div id="table-responsive">
+                    <table id="main-table" class="table text-left table-striped table-bordered">
+                       <tbody>
+                          <tr>
+                             <th>bankaccountno</th>
+                             <th>nameofaccount</th>
+                             <th>narration</th>
+                             <th>accountopeningdate</th>
+                             <th>bankaccounttype</th>
+                             <th>statusofaccount</th>
+                             <th>subledgeraccountcode</th>
+                          </tr>
+                       </tbody>
+                    </table>
+                 </div>
+              </div>
+           </div>
+        </div>
+     </div>
+  </form>
+</div>
+</div>
+</div>  
+      <!-- <div class="widget">
+        <div class="widget-header">
+          <h2>bankmaster Details</h2>
+          <div class="additional-btn"> <a href="#" data-toggle="tooltip" data-original-title="Help"><i class="fa fa-question-circle fa-lg"></i></a> </div>
+        </div>
+        <div class="widget-content padding">
+          <div class="mand-label clearfix"><span>Field with <i class="text-red-1">*</i> is mandatory</span></div>
+          <form action="" method="post" class="form-horizontal">
+           {% csrf_token %}
+            <div class="form-group">
+              <label class="col-sm-2 control-label">bankmaster Codde</label>
+              <div class="col-sm-4">
+              
+                 {{ form.bankcode  }}  
+              </div>
+              <label class="col-sm-2 control-label">Bank Name</label>
+              <div class="col-sm-4">
+               {{ form.bankname   }} 
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">branch</label>
+              <div class="col-sm-4">
+               {{ form.branch   }} 
+                {% comment %} <input name="" type="text" class="form-control" > {% endcomment %}
+              </div>
+              <label class="col-sm-2 control-label">bankaddress </label>
+              <div class="col-sm-4">
+               {{ form.bankaddress  }} 
+                {% comment %} <input name="" type="text" class="form-control" > {% endcomment %}
+              </div>
+            </div>
+           
+           
+            
+            <div class="text-center padding-top-10">
+              <button type="submit" class="btn btn-success">Submit</button>
+              <button type="button" class="btn btn-danger">Cancel</button>
+            </div>
+          </form>
+        </div>
+      </div>
+ 
+    </div> -->
+{% endblock %} </div>

@@ -1,32 +1,8 @@
 {% load static %}
 {% comment %} 
-{% load static %}
-<!DOCTYPE html>
-<html>
 
-<head>
-    <title>{% block title %}{% endblock %}</title>
-    
-    <link href="{% static "css/blog.css" %}" rel="stylesheet">
-    <script src="{% static "js/main.js" %}"></script>   
-
-    
-</head>
-
-<body>
-    <div id="content">
-        {% block content %}
-        {% endblock %}
-    </div>
-    <div id="sidebar">
-        <h2>My blog</h2>
-        <p>This is my blog.</p>
-    </div>
-</body>
-
-</html> {% endcomment %}
-
-
+{% load sweetify %}
+{% sweetify %}
 
 <!DOCTYPE html>
 <html>
@@ -52,6 +28,8 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>  
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script> 
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+<link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 </head>
 <body class="fixed-left">
 <!-- Begin page -->

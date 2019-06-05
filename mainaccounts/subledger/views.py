@@ -5,6 +5,12 @@ from django.urls import reverse_lazy
 from django.shortcuts import render,redirect, get_object_or_404
 from django.contrib.postgres.search import SearchVector
 from django.forms import ModelForm
+import psycopg2
+import sys
+
+from configparser import ConfigParser
+from django.db import connection
+
 
 from django.contrib import messages
 
@@ -58,7 +64,22 @@ def SubledgerCreate(request, template_name='subledger/subledger_master_form.html
     success = False
 
     if form.is_valid():
+        subledger_code=request.POST.get('subledger_code')
+        cursor = connection.cursor()
+        cursor.execute("select public.fn_subledger_maxcode(%s)",(subledger_code,))
+        result = cursor.fetchall()
+        for row in result:
+            result=row[0]
+
+   
+        # subledger_code=result
+        
+
+        form = form.save(commit=False)
+        form.subledger_code = result
+
         form.save()
+        # messages.success(request, 'Saved successfully')
         success = True
         return redirect('subledger:subledger_search')
     return render(request, template_name, {'form': form,'lookupdet':lookupdet,'functionmaster':functionmaster,
@@ -93,9 +114,11 @@ def SubledgerDelete(request, pk, template_name='subledger/subledger_master_confi
     return render(request, template_name, {'object': post})
 
 
-def Subledger_master_delete(request, pk):
+def subledger(request, pk):
     post = get_object_or_404(Subledger_master, pk=pk)
+    print("hello")
     data = dict()
     context = {'post': post}
     data['html_form'] = render_to_string('subledger/partial_book_delete.html', context, request=request)
     return JsonResponse(data)
+
